@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --passWithNoTests",
-    "test:coverage": "jest --coverage --passWithNoTests"
+    "test": "jest --passWithNoTests --forceExit",
+    "test:coverage": "jest --coverage --passWithNoTests --forceExit"
   },
   "dependencies": {},
   "devDependencies": {
