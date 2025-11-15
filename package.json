@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "install": "npm install",
     "test": "jest --passWithNoTests",
     "test:coverage": "jest --coverage --passWithNoTests"
   },
