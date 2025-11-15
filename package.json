@@ -2,5 +2,26 @@
   "name": "bulletin-board-app",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": { "start": "node index.js" }
+  "scripts": {
+    "start": "node index.js",
+    "install": "npm install",
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage --passWithNoTests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.3.0"
+  },
+  "jest": {
+    "collectCoverageFrom": ["index.js"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
 }
