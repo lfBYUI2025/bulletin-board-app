@@ -9,4 +9,4 @@ http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/html' }); res.end(data);
     });
   } else { res.writeHead(404); res.end('Not found'); }
-}).listen(PORT, () => console.log('App on ' + PORT));
+}).listen(PORT, '0.0.0.0', () => console.log('App on ' + PORT));
