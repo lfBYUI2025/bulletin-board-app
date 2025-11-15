@@ -1,4 +1,3 @@
-
 describe('Bulletin Board App', () => {
   test('index.js exists and is valid', () => {
     const app = require('../index.js');
@@ -9,5 +8,4 @@ describe('Bulletin Board App', () => {
     const fs = require('fs');
     expect(fs.existsSync('public/index.html')).toBe(true);
   });
-});
 });
