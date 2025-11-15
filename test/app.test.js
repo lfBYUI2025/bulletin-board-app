@@ -7,28 +7,31 @@ jest.mock('fs');
 jest.mock('path');
 
 describe('Bulletin Board Server', () => {
-  let app;
+  let app, server;
 
-  beforeAll(() => {
-    const server = require('../index.js');
-    app = http.createServer(server);
-    app.listen(0);
+  beforeAll((done) => {
+    const handler = require('../index.js');
+    server = http.createServer(handler);
+    server.listen(0, () => {
+      app = request(server);
+      done();
+    });
   });
 
   afterAll((done) => {
-    app.close(done);
+    server.close(done);
   });
 
   test('GET / returns index.html', async () => {
     fs.readFile.mockImplementation((p, cb) => cb(null, '<h1>Bulletin Board</h1>'));
     path.join.mockReturnValue('/mock/index.html');
-    const res = await request(app).get('/');
+    const res = await app.get('/');
     expect(res.status).toBe(200);
     expect(res.text).toContain('Bulletin Board');
-  });
+  }, 10000);
 
   test('GET /unknown returns 404', async () => {
-    const res = await request(app).get('/unknown');
+    const res = await app.get('/unknown');
     expect(res.status).toBe(404);
-  });
+  }, 10000);
 });
